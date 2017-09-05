@@ -1,0 +1,81 @@
+#filler-loader {
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 998;
+}
+#filler-loader .loader-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 240px;
+    height: 145px;
+    margin: auto;
+    z-index: 999;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    text-align: center;
+}
+#filler-loader .loader-text {
+    font: 18px Arial;
+    margin-top: 20px;
+}
+#filler-loader .loader-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin-top: 25px;
+}
+.sendToPdfFillerEmpty {
+    display: inline-block;
+    width: 57px;
+}
+.sendToPdfFiller {
+    position: absolute;
+    background: #ff8015;
+    padding: 4px 6px 4px 4px!important;
+    cursor: pointer;
+    line-height: 0!important;
+    text-indent: 0!important;
+}
+#filler-error {
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 998;
+}
+#filler-error .error-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 240px;
+    height: 145px;
+    margin: auto;
+    z-index: 999;
+    background: #fef0ee;
+    border: 1px solid #f3a59d;
+    border-radius: 5px;
+    text-align: center;
+}
+#filler-error .error-text {
+    color: #e74c3c;
+    font: 18px Arial;
+    margin-top: 50px;
+}
+#filler-error .error-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin-top: 25px;
+}
