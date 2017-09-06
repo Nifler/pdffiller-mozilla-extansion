@@ -169,7 +169,7 @@ function showError(message, delay) {
         '</div>'
     );
     if (delay > 0){
-        setTimeout('hideError()', delay);
+        setTimeout(hideError, delay);
     }
 }
 function hideError() {

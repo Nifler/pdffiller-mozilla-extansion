@@ -1,9 +1,9 @@
 {
 
   "manifest_version": 2,
-  "name": "Add Checkmarks in PDF - PDFfiller",
-  "version": "0.2.9",
-  "author": "PDFfiller (support@pdffiller.com)",
+  "name": "test extension",
+  "version": "1.0",
+  "author": "Nifler (nifler11@gmail.com)",
 
   "description": "Instantly add checkmarks into PDF with PDFfiller Mozilla Extension. Edit, sign, save and share anytime, anywhere, from any device!",
 
@@ -16,10 +16,12 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "exclude_matches": ["*://*.pdffiller.com/*"],
       "css": ["css/style.css"],
-      "js": ["libs/jquery.min.js", "libs/base64.js", "js/config.js", "js/browser.js", "js/inject.js"]
+      "js": ["libs/jquery-3.2.1.min.js", "libs/base64.js", "js/config.js", "js/browser.js", "js/inject.js"]
     }
+  ],
+  "permissions": [
+    "*://*.pdffiller.com/*"
   ],
   "web_accessible_resources": [
     "img/*"
