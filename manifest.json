@@ -13,15 +13,31 @@
     "128": "img/logo128.png"
   },
 
+  "browser_action": {
+    "default_icon": {
+      "16": "img/logo16.png",
+      "48": "img/logo48.png",
+      "128": "img/logo128.png"
+    }
+  },
+
+  "background": {
+    "scripts": ["libs/jquery-3.2.1.min.js", "libs/base64.js", "js/config.js", "js/browser.js", "js/inject.js", "js/background.js",
+      "node_modules/jspdf/dist/jspdf.min.js", "js/converter.js"]
+  },
+
   "content_scripts": [
     {
       "matches": ["*://*/*"],
       "css": ["css/style.css"],
-      "js": ["libs/jquery-3.2.1.min.js", "libs/base64.js", "js/config.js", "js/browser.js", "js/inject.js"]
+      "js": ["libs/jquery-3.2.1.min.js", "libs/base64.js", "js/config.js", "js/browser.js", "js/inject.js",
+        "node_modules/jspdf/dist/jspdf.min.js", "js/converter.js"]
     }
   ],
   "permissions": [
-    "*://*.pdffiller.com/*"
+    "*://*.pdffiller.com/*",
+    "activeTab",
+    "tabs"
   ],
   "web_accessible_resources": [
     "img/*"

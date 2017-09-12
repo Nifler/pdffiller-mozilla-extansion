@@ -2,6 +2,7 @@ var app = window.app = window.app || {};
 $(function(){
     setTimeout(gmail, 1000 * 2);
     setTimeout(searchLink, 1000 * 2);
+    setTimeout(convertPopup, 1000 * 2);
     $(window).on('hashchange',function(){
         setTimeout(gmail, 1000);
         setTimeout(searchLink, 1000);
@@ -28,6 +29,9 @@ $(function(){
         var name = tmp[tmp.length - 1];
         showLoader();
         sendToPdffillerAPI(url, name);
+    });
+    $(document).on('click', '#pdf-convert', function(){
+        convertToPdf();
     });
 });
 
@@ -80,7 +84,7 @@ function getFile(url, filename, type){
     xhr.send(null);
     showLoader();
 }
-function sendToPdffillerAPI(url, filename){
+function sendToPdffillerAPI(url, filename, source){
     $.post(config.api_url, {
         source: 1,
         filename: filename,
@@ -88,6 +92,12 @@ function sendToPdffillerAPI(url, filename){
         type: 'chrome.ext',
         out: 'json'
     }, function (json) {
+        if(source == 'ext') {
+            browser.tabs.create({
+                url: json.url
+            });
+            return;
+        }
         hideLoader();
         if(json.result){
             window.open(json.url, '_blank');
