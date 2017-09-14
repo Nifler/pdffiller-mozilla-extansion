@@ -81,4 +81,7 @@
 }
 #pdf-convert {
     float:right;
+    clear: both;
+    z-index: 999;
+    position: relative;
 }

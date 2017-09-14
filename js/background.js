@@ -6,22 +6,13 @@ function tabsWorker(tabs) {
     if (pdf) {
         sendToPdffillerAPI(activeTab.url, name, 'ext');
     } else {
-        showPopup();
+        console.log('tabs worker -> convert');
+        convertToPdf(activeTab.url);
     }
 }
 function openPage() {
     var querying = browser.tabs.query({active: true}) ;
     querying.then(tabsWorker);
-}
-
-function showPopup() {
-
-    var showPopup = '$("#pdf-convert").show();';
-
-    var executing = browser.tabs.executeScript({
-        code: showPopup
-    });
-    executing.then(onExecuted, onError);
 }
 
 browser.browserAction.onClicked.addListener(openPage);

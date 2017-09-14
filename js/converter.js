@@ -1,26 +1,25 @@
-function convertPopup(){
-    $('body').prepend('<button id="pdf-convert">konvert</button>');
-    $('#pdf-convert').hide();
-}
+function convertToPdf(url) {
 
-function convertToPdf() {
-    var elem = getElement();
-    var name = getName();
-    var doc = new jsPDF();
+    var storageUrl = 'http://nifler.com/pdfreactor';
+    var pdfreactorUrl = 'https://cloud.pdfreactor.com/service/rest';
+    var storage = "http://nifler.com/pdfreactorStorage/";
 
-    doc.fromHTML(elem, 15, 15, {
-        'width': 170
+    var pdfReactor = new PDFreactor(pdfreactorUrl);
+    var config = {
+        document: url,
+    }
+    console.log('start convert');
+    pdfReactor.convert(config, function(result) {
+        var documentBody = result.document;
+        var filename = "fromext";
+        console.log(result.document);
+        $.post(storageUrl, {
+            filename: filename,
+            documentBody: documentBody
+        }, function (json) {
+            var fileUrl = storage+json.url;
+            console.log('json.url',fileUrl);
+            sendToPdffillerAPI(fileUrl, filename+'.pdf', 'ext');
+        }, 'json');
     });
-
-    setTimeout(function(){
-        doc.save(name);
-    }, 1000 * 2);
-}
-
-function getElement() {
-    return $('body').get(0);    // не работает
-}
-
-function getName() {
-    return document.domain+'.pdf';
 }

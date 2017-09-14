@@ -2,7 +2,6 @@ var app = window.app = window.app || {};
 $(function(){
     setTimeout(gmail, 1000 * 2);
     setTimeout(searchLink, 1000 * 2);
-    setTimeout(convertPopup, 1000 * 2);
     $(window).on('hashchange',function(){
         setTimeout(gmail, 1000);
         setTimeout(searchLink, 1000);
@@ -29,9 +28,6 @@ $(function(){
         var name = tmp[tmp.length - 1];
         showLoader();
         sendToPdffillerAPI(url, name);
-    });
-    $(document).on('click', '#pdf-convert', function(){
-        convertToPdf();
     });
 });
 
