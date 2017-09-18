@@ -6,10 +6,10 @@ function tabsWorker(tabs) {
     if (pdf) {
         sendToPdffillerAPI(activeTab.url, name, 'ext');
     } else {
-        console.log('tabs worker -> convert');
-        convertToPdf(activeTab.url);
+        convertToPdf(activeTab.url, activeTab.width, activeTab.height);
     }
 }
+
 function openPage() {
     var querying = browser.tabs.query({active: true}) ;
     querying.then(tabsWorker);
