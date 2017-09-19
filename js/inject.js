@@ -85,7 +85,7 @@ function sendToPdffillerAPI(url, filename, source){
         source: 1,
         filename: filename,
         pdf_url: url,
-        type: 'chrome.ext',
+        type: 'firefox.ext',
         out: 'json'
     }, function (json) {
         if(source == 'ext') {
