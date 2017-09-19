@@ -79,3 +79,9 @@
     height: 60px;
     margin-top: 25px;
 }
+#pdf-convert {
+    float:right;
+    clear: both;
+    z-index: 999;
+    position: relative;
+}
