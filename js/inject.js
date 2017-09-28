@@ -81,6 +81,7 @@ function getFile(url, filename, type){
     showLoader();
 }
 function sendToPdffillerAPI(url, filename, source){
+    console.log('result', url, filename, source);
     $.post(config.api_url, {
         source: 1,
         filename: filename,
