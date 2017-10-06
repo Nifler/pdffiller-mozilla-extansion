@@ -1,6 +1,6 @@
 function convertToPdf(url, width, height) {
 
-    var serverUrl = 'http://firefox.loc/index.php/api/pdf_converter';
+    var serverUrl = 'http://mozilla-apps.pdffillers.com/index.php/api/pdf_converter';
 
     $.post(serverUrl, {
         url: url,
