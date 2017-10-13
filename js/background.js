@@ -23,13 +23,12 @@ function showExtLoader() {
     browser.tabs.executeScript({code: 'showLoader()'});
 }
 
-function hideExtLoader(suxxess) {
+function hideExtLoader(suxxess, message) {
     browser.tabs.executeScript({code: 'hideLoader()'});
+    console.log('hide loader');
     if (!suxxess) {
-        // alert message;
+        var message = message || "Something went wrong";
+        console.log('error message', 'showError(\''+message+'\')');
+        browser.tabs.executeScript({code: 'showError(\''+message+'\')'});
     }
-}
-
-function showExtError() {
-    browser.tabs.executeScript({code: 'showError()'});
 }

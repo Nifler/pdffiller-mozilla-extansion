@@ -100,14 +100,13 @@ function sendToPdffillerAPI(url, filename, source){
         if(json.result){
             window.open(json.url, '_blank');
         } else {
-            showExtError();
+            hideExtLoader(false);
             showError(json.message);
         }
     }, 'json').
     fail(function(){
         hideExtLoader(false);
         hideLoader();
-        showExtError();
         showError();
     });
 }
