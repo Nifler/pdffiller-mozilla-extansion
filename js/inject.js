@@ -81,7 +81,7 @@ function getFile(url, filename, type){
     showLoader();
 }
 function sendToPdffillerAPI(url, filename, source){
-    console.log('result', url, filename, source);
+
     $.post(config.api_url, {
         source: 1,
         filename: filename,
@@ -90,6 +90,7 @@ function sendToPdffillerAPI(url, filename, source){
         out: 'json'
     }, function (json) {
         if(source == 'ext') {
+            hideExtLoader(true);
             browser.tabs.create({
                 url: json.url
             });
@@ -101,7 +102,9 @@ function sendToPdffillerAPI(url, filename, source){
         } else {
             showError(json.message);
         }
-    }, 'json').error(function(){
+    }, 'json').
+    fail(function(){
+        hideExtLoader(false);
         hideLoader();
         showError();
     });

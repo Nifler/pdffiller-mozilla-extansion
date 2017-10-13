@@ -4,8 +4,10 @@ function tabsWorker(tabs) {
     pdf = (activeTab.url.substr(-4).toLowerCase() == '.pdf');
     var name = 'name.pdf';
     if (pdf) {
+        showExtLoader();
         sendToPdffillerAPI(activeTab.url, name, 'ext');
     } else {
+        showExtLoader();
         convertToPdf(activeTab.url, activeTab.width, activeTab.height);
     }
 }
@@ -16,3 +18,14 @@ function openPage() {
 }
 
 browser.browserAction.onClicked.addListener(openPage);
+
+function showExtLoader() {
+    browser.tabs.executeScript({code: 'showLoader()'});
+}
+
+function hideExtLoader(suxxess) {
+    browser.tabs.executeScript({code: 'hideLoader()'});
+    if (!suxxess) {
+        // alert message;
+    }
+}
