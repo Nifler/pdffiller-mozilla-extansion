@@ -8,18 +8,17 @@ function convertToPdf(url, width, height) {
     }, function (json) {
         var filename = json.name+'.pdf';
         var fileUrl = json.url;
-        console.log('DONE CONVERT');
         sendToPdffillerAPI(fileUrl, filename, 'ext');
     }, 'json').
         done(function() {
-            console.log('done');
+            console.log('done convert');
     }).
         fail(function() {
             hideExtLoader(false);
             console.log('fail convert');
     }).
         always(function(){
-            console.log('always')
+            console.log('always convert')
     });
 
 }

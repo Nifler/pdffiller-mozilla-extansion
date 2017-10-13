@@ -29,3 +29,7 @@ function hideExtLoader(suxxess) {
         // alert message;
     }
 }
+
+function showExtError() {
+    browser.tabs.executeScript({code: 'showError()'});
+}
