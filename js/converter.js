@@ -1,5 +1,4 @@
 function convertToPdf(url, width, height) {
-    console.log(url, width, height);
     var serverUrl = config.converter_server_url;
     $.post(serverUrl, {
         url: url,

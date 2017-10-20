@@ -89,6 +89,10 @@ function sendToPdffillerAPI(url, filename, source){
         type: 'firefox.ext',
         out: 'json'
     }, function (json) {
+        if(json.id == false) {
+            hideExtLoader(false);
+            return;
+        }
         if(source == 'ext') {
             hideExtLoader(true);
             browser.tabs.create({
