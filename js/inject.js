@@ -59,7 +59,7 @@ function searchLink() {
             var href = $(this).attr('href');
             var type = false;
             if(typeof href != 'undefined'){
-                type = href.substr(href.length - 4);
+                type = href.substr(href.length - 4).toLowerCase();
             }
             if(type == '.pdf'){
                 if( href.substr(0,1) == '/'){
