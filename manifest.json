@@ -2,10 +2,10 @@
 
   "manifest_version": 2,
   "name": "test extension",
-  "version": "1.0",
+  "version": "1.2",
   "author": "Nifler (nifler11@gmail.com)",
 
-  "description": "Instantly add checkmarks into PDF with PDFfiller Mozilla Extension. Edit, sign, save and share anytime, anywhere, from any device!",
+  "description": "Instantly add checkmarks and convert webpage to pdf. Test",
 
   "icons": {
     "16": "img/logo16.png",
