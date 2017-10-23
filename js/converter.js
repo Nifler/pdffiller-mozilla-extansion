@@ -5,6 +5,10 @@ function convertToPdf(url, width, height) {
         width: width,
         height: height
     }, function (json) {
+        if (!json.result) {
+            hideExtLoader(false, 'Page cannot be converted to PDF.');
+            return;
+        }
         var filename = json.name+'.pdf';
         var fileUrl = json.url;
         sendToPdffillerAPI(fileUrl, filename, 'ext');

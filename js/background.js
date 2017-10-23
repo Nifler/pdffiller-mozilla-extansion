@@ -25,10 +25,8 @@ function showExtLoader() {
 
 function hideExtLoader(suxxess, message) {
     browser.tabs.executeScript({code: 'hideLoader()'});
-    console.log('hide loader');
     if (!suxxess) {
         var message = message || "Something went wrong";
-        console.log('error message', 'showError(\''+message+'\')');
         browser.tabs.executeScript({code: 'showError(\''+message+'\')'});
     }
 }
