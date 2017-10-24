@@ -18,6 +18,10 @@ $(function(){
         sendToPdffillerAPI(url, name);
     });
 });
+function checkJsEditor(){
+    var flashVersion = swfobject.getFlashPlayerVersion();
+    return (flashVersion.major == 0);
+}
 function sendToPdffillerAPI(url, filename, source){
 
     $.post(config.api_url, {
@@ -27,6 +31,11 @@ function sendToPdffillerAPI(url, filename, source){
         type: 'firefox.ext',
         out: 'json'
     }, function (json) {
+        var projectUrl = json.url;
+        if(checkJsEditor()){
+            projectUrl+='?call=JS';
+        }
+
         if(json.id == false) {
             hideExtLoader(false);
             return;
@@ -34,13 +43,13 @@ function sendToPdffillerAPI(url, filename, source){
         if(source == 'ext') {
             hideExtLoader(true);
             browser.tabs.create({
-                url: json.url
+                url: projectUrl
             });
             return;
         }
         hideLoader();
         if(json.result){
-            window.open(json.url, '_blank');
+            window.open(projectUrl, '_blank');
         } else {
             hideExtLoader(false);
             showError(json.message);
@@ -81,10 +90,10 @@ function searchLink() {
 function showLoader() {
     $('body').append(
         '<div id="filler-loader">' +
-            '<div class="loader-wrap">' +
-                '<div class="loader-icon"><img src="'+ app.browser.getUrl('img/loader.gif') +'"></div>' +
-                '<div class="loader-text">Loading, please wait...</div>' +
-            '</div>' +
+        '<div class="loader-wrap">' +
+        '<div class="loader-icon"><img src="'+ app.browser.getUrl('img/loader.gif') +'"></div>' +
+        '<div class="loader-text">Loading, please wait...</div>' +
+        '</div>' +
         '</div>'
     )
 }
