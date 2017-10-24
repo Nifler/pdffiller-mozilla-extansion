@@ -33,7 +33,7 @@ function sendToPdffillerAPI(url, filename, source){
     }, function (json) {
         var projectUrl = json.url;
         if(checkJsEditor()){
-            projectUrl+='?call=JS';
+            projectUrl+='?call=JS_NEW';
         }
 
         if(json.id == false) {
